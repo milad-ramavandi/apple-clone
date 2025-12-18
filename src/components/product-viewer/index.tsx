@@ -8,7 +8,7 @@ gsap.registerPlugin(useGSAP);
 
 const ProductViewer = () => {
   const [color, setcolor] = useState<string>("#2e2c2e");
-  const [scale, setScale] = useState<number>(0.045);
+  const [scale, setScale] = useState<number>(0.04);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const modelRef = useRef<THREE.Object3D | null>(null);
   const initialCameraPos = useRef<THREE.Vector3 | null>(new THREE.Vector3());
@@ -48,13 +48,12 @@ const ProductViewer = () => {
     if (!initialCameraTarget.current) return;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
-    camera.position.set(0, 1.5, 4);
+    camera.position.set(0, 2, 3);
     const renderer = new THREE.WebGLRenderer({
       canvas: canvasRef.current,
       antialias: true,
     });
     renderer.setClearColor("#000");
-
     renderer.setSize(
       canvasRef.current.clientWidth,
       canvasRef.current.clientHeight
@@ -62,11 +61,11 @@ const ProductViewer = () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     const point1 = new THREE.PointLight("white", 1);
-    point1.position.set(-1, -1, -1);
+    point1.position.set(0, -25, 10);
     scene.add(point1);
 
     const point2 = new THREE.PointLight("white", 1);
-    point2.position.set(0, 0, -2);
+    point2.position.set(0, 15, 10);
     scene.add(point2);
 
     const dirLight1 = new THREE.DirectionalLight("white", 1);
@@ -199,9 +198,9 @@ const ProductViewer = () => {
           </div>
           <div className="size-control">
             <div
-              onClick={() => setScale(0.035)}
+              onClick={() => setScale(0.032)}
               className={`${
-                scale === 0.035
+                scale === 0.032
                   ? "bg-white text-black"
                   : "bg-transparent text-white"
               }`}
@@ -209,9 +208,9 @@ const ProductViewer = () => {
               <p>14"</p>
             </div>
             <div
-              onClick={() => setScale(0.045)}
+              onClick={() => setScale(0.04)}
               className={`${
-                scale === 0.045
+                scale === 0.04
                   ? "bg-white text-black"
                   : "bg-transparent text-white"
               }`}
