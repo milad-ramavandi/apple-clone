@@ -3,21 +3,25 @@
 @font-face {
   font-family: "Regular";
   src: url("/fonts/regular.otf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Medium";
   src: url("/fonts/medium.otf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "SemiBold";
   src: url("/fonts/semibold.otf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Bold";
   src: url("/fonts/bold.otf");
+  font-display: swap;
 }
 
 * {
@@ -89,7 +93,7 @@ body {
 
 @layer components {
   header {
-    @apply w-screen fixed top-0 left-0 z-50 flex-center bg-black min-h-[7vh];
+    @apply w-screen fixed top-0 left-0 z-50 flex-center bg-black h-15 md:h-25;
 
     nav {
       @apply container mx-auto flex-between px-5 2xl:px-0;
@@ -113,26 +117,30 @@ body {
   }
 
   #hero {
-    @apply h-auto lg:h-[80vh] col-center mt-40 lg:mt-20 2xl:mt-[7vh];
+    @apply col-center mt-20 md:mt-35 lg:mt-45 xl:mt-65;
 
-    div {
-      @apply col-center lg:translate-y-16;
+    p {
+      @apply font-semibold lg:text-3xl 2xl:text-5xl text-white;
+    }
 
-      p {
-        @apply font-semibold lg:text-3xl 2xl:text-5xl text-white;
-      }
-
-      h1 {
-        @apply font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-6xl 2xl:text-8xl my-6 text-white;
-      }
+    h1 {
+      @apply font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-6xl 2xl:text-8xl my-6 text-white;
     }
 
     video {
-      @apply mx-auto lg:translate-y-5 2xl:translate-y-0;
+      @apply mx-auto h-30 sm:h-50 md:h-60 lg:h-80 xl:h-96.5;
     }
 
     button {
       @apply bg-primary text-white py-2 px-6 mt-10 lg:mt-0 mb-5 rounded-full font-semibold text-lg cursor-pointer hover:bg-white hover:text-black transition-all duration-300 ease-in-out;
+    }
+    .mil-letter-span {
+      display: inline-block;
+      cursor: default;
+    }
+
+    .mil-word-span {
+      display: inline-block;
     }
   }
 
@@ -172,7 +180,7 @@ body {
     }
 
     #canvas {
-      @apply w-full! h-[80vh]! lg:h-dvh! relative z-40;
+      @apply w-full! h-[80vh]! lg:h-dvh!;
     }
   }
 
@@ -187,16 +195,16 @@ body {
       }
 
       .mask {
-        @apply absolute h-full top-0 lg:-top-20 xl:top-1;
+        @apply absolute h-full top-0 lg:-top-1.5 xl:top-0;
 
         img {
-          @apply h-full scale-150 lg:scale-100;
+          @apply h-full scale-150! lg:scale-110!;
           transform: scale(80, 80);
         }
 
         @media (max-width: 1024px) {
           img {
-            transform: scale(1, 1);
+            transform: scale(1, 1) !important;
           }
         }
       }
@@ -426,13 +434,4 @@ body {
       }
     }
   }
-}
-
-.mil-letter-span {
-  display: inline-block;
-  cursor: default;
-}
-
-.mil-word-span {
-  display: inline-block;
 }

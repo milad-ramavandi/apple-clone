@@ -4,15 +4,21 @@ import { GLTFLoader, OrbitControls } from "three/examples/jsm/Addons.js";
 import { BODY_MATERIAL_NAMES } from "../../constants";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useMediaQuery } from "react-responsive";
+import { MeshoptDecoder } from "three/examples/jsm/libs/meshopt_decoder.module.js";
 gsap.registerPlugin(useGSAP);
 
 const ProductViewer = () => {
-  const [color, setcolor] = useState<string>("#2e2c2e");
-  const [scale, setScale] = useState<number>(0.04);
+  const [color, setColor] = useState<string>("#2e2c2e");
+  const [scale, setScale] = useState<number>(0.043);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const modelRef = useRef<THREE.Object3D | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const initialCameraPos = useRef<THREE.Vector3 | null>(new THREE.Vector3());
   const initialCameraTarget = useRef<THREE.Vector3 | null>(new THREE.Vector3());
+  const isMobile = useMediaQuery({ query: "(max-width:1024px)" });
+  const isDesktop = useMediaQuery({ query: "(min-width:1280px)" });
+
   // const [debugIndex, setDebugIndex] = useState(0);
   // useEffect(() => {
   //   if (!modelRef.current) return;
@@ -43,12 +49,13 @@ const ProductViewer = () => {
   //   console.log("DEBUG MATERIAL:", debugIndex, mats[debugIndex]);
   // }, [debugIndex]);
   useEffect(() => {
+    if (!sectionRef.current) return;
     if (!canvasRef.current) return;
     if (!initialCameraPos.current) return;
     if (!initialCameraTarget.current) return;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
-    camera.position.set(0, 2, 3);
+    camera.position.set(0, 1.5, isMobile ? 3 : 4);
     const renderer = new THREE.WebGLRenderer({
       canvas: canvasRef.current,
       antialias: true,
@@ -112,8 +119,13 @@ const ProductViewer = () => {
     });
 
     const loader = new GLTFLoader();
-    loader.load("/models/macbook-16-1.glb", (gltf) => {
-      gltf.scene.scale.set(scale, scale, scale);
+    loader.setMeshoptDecoder(MeshoptDecoder);
+    loader.load("/models/macbook-optimized.glb", (gltf) => {
+      gltf.scene.scale.set(
+        scale,
+        isMobile ? scale - 0.01 : isDesktop ? scale + 0.01 : scale,
+        scale
+      );
       gltf.scene.traverse((child: any) => {
         if (child.isMesh && child.material) {
           if (BODY_MATERIAL_NAMES.includes(child.material.name)) {
@@ -146,7 +158,11 @@ const ProductViewer = () => {
 
   useEffect(() => {
     if (!modelRef.current) return;
-    modelRef.current.scale.set(scale, scale, scale);
+    modelRef.current.scale.set(
+      scale,
+      isMobile ? scale - 0.01 : isDesktop ? scale + 0.01 : scale,
+      scale
+    );
   }, [scale]);
 
   useEffect(() => {
@@ -179,28 +195,28 @@ const ProductViewer = () => {
       .to(modelRef.current.position, {
         x: 0,
       });
-  }, [scale]);
+  }, {scope:sectionRef, dependencies:[scale]});
 
   return (
-    <section id="product-viewer">
+    <section id="product-viewer" ref={sectionRef}>
       <h2>Take a closer look.</h2>
       <div className="controls">
         <div className="flex-center gap-5 mt-5">
           <div className="color-control">
             <div
-              onClick={() => setcolor("#adb5bd")}
+              onClick={() => setColor("#adb5bd")}
               className={`bg-neutral-300 ${color === "#adb5bd" && "active"}`}
             />
             <div
-              onClick={() => setcolor("#2e2c2e")}
+              onClick={() => setColor("#2e2c2e")}
               className={`bg-neutral-900 ${color === "#2e2c2e" && "active"}`}
             />
           </div>
           <div className="size-control">
             <div
-              onClick={() => setScale(0.032)}
+              onClick={() => setScale(0.034)}
               className={`${
-                scale === 0.032
+                scale === 0.034
                   ? "bg-white text-black"
                   : "bg-transparent text-white"
               }`}
@@ -208,9 +224,9 @@ const ProductViewer = () => {
               <p>14"</p>
             </div>
             <div
-              onClick={() => setScale(0.04)}
+              onClick={() => setScale(0.043)}
               className={`${
-                scale === 0.04
+                scale === 0.043
                   ? "bg-white text-black"
                   : "bg-transparent text-white"
               }`}
