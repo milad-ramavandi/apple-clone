@@ -26,7 +26,7 @@ const Showcase = () => {
         })
         .to(".content", { opacity: 1, y: 0, ease: "power1.in" });
     }
-  }, [isTablet]);
+  }, {dependencies: [isTablet]});
 
   return (
     <section ref={sectionRef}>

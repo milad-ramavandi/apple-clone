@@ -238,23 +238,23 @@ body {
       @apply w-7xl 2xl:w-400 h-[50vh] lg:h-screen relative;
 
       img {
-        @apply max-w-40 lg:max-w-108 2xl:max-w-140 object-cover object-center;
+        @apply max-w-40 sm:max-w-60 lg:max-w-108 2xl:max-w-140 object-cover object-center;
       }
 
       .p1 {
-        @apply absolute bottom-1/2 left-[23%] z-1 max-sm:left-[33%];
+        @apply absolute left-[55%] top-1/4 sm:left-1/4 md:left-1/6 lg:bottom-1/2 lg:left-[23%] z-1;
       }
 
       .p2 {
-        @apply absolute bottom-[40%] right-[17%] z-3 max-sm:right-[37%];
+        @apply absolute right-[55%] top-1/4 sm:right-1/4 md:right-1/6 lg:bottom-[40%] lg:right-[17%] z-3;
       }
 
       .p3 {
-        @apply absolute bottom-1/4 right-[15%] z-2 max-sm:right-[35%];
+        @apply absolute bottom-1/4 right-[52%] md:right-[60%] lg:right-1/4 z-2;
       }
 
       .p4 {
-        @apply absolute bottom-[15%] right-[10%] z-1 max-sm:right-[30%];
+        @apply absolute -bottom-[5%] right-[55%] sm:right-1/4 md:right-1/6 lg:right-[10%] z-1;
       }
 
       .p5 {
@@ -262,11 +262,11 @@ body {
       }
 
       .p6 {
-        @apply absolute bottom-1/4 left-1/4 z-2 max-sm:left-[35%];
+        @apply absolute bottom-1/4 left-[52%] md:left-[60%] lg:left-1/4 z-2;
       }
 
       .p7 {
-        @apply absolute bottom-[5%] left-[15%] z-3 max-sm:left-[35%];
+        @apply absolute -bottom-[5%] left-[55%] sm:left-1/4 md:left-1/6 lg:left-[15%] z-3;
       }
     }
 

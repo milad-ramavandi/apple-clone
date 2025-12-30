@@ -1,8 +1,8 @@
 import { lazy, Suspense } from "react";
 import Header from "./components/header"
 import Hero from "./components/hero"
-// import ProductViewer from "./components/product-viewer"
 import Showcase from "./components/showcase";
+import Performance from "./components/performance";
 
 const ProductViewer = lazy(() => import("./components/product-viewer"))
 
@@ -15,6 +15,7 @@ const App = () => {
         <ProductViewer/>
       </Suspense>
       <Showcase/>
+      <Performance/>
     </main>
   )
 }

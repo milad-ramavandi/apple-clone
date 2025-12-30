@@ -163,7 +163,7 @@ const ProductViewer = () => {
       isMobile ? scale - 0.01 : isDesktop ? scale + 0.01 : scale,
       scale
     );
-  }, [scale]);
+  }, [scale, isMobile, isDesktop]);
 
   useEffect(() => {
     if (!modelRef.current) return;
