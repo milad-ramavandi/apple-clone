@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader, OrbitControls } from "three/examples/jsm/Addons.js";
-import { BODY_MATERIAL_NAMES } from "../../constants";
+import { BODY_MATERIAL_NAMES, IMAGE_TEXTURE, MACBOOK_MODEL_GLB } from "../../constants";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useMediaQuery } from "react-responsive";
@@ -17,7 +17,7 @@ const ProductViewer = () => {
   const initialCameraPos = useRef<THREE.Vector3 | null>(new THREE.Vector3());
   const initialCameraTarget = useRef<THREE.Vector3 | null>(new THREE.Vector3());
   const isMobile = useMediaQuery({ query: "(max-width:1024px)" });
-  const isDesktop = useMediaQuery({ query: "(min-width:1280px)" });
+  const isDesktop = useMediaQuery({ query: "(min-width:1024px)" });
 
   // const [debugIndex, setDebugIndex] = useState(0);
   // useEffect(() => {
@@ -120,10 +120,10 @@ const ProductViewer = () => {
 
     const loader = new GLTFLoader();
     loader.setMeshoptDecoder(MeshoptDecoder);
-    loader.load("/models/macbook-optimized.glb", (gltf) => {
+    loader.load(MACBOOK_MODEL_GLB, (gltf) => {
       gltf.scene.scale.set(
         scale,
-        isMobile ? scale - 0.01 : isDesktop ? scale + 0.01 : scale,
+        isMobile ? scale - 0.015 : isDesktop ? scale + 0.007 : scale,
         scale
       );
       gltf.scene.traverse((child: any) => {
@@ -142,7 +142,7 @@ const ProductViewer = () => {
 
     const pmrem = new THREE.PMREMGenerator(renderer);
 
-    new THREE.TextureLoader().load("./screen.png", (texture) => {
+    new THREE.TextureLoader().load(IMAGE_TEXTURE, (texture) => {
       const envMap = pmrem.fromEquirectangular(texture).texture;
       scene.environment = envMap;
       texture.dispose();
@@ -160,7 +160,7 @@ const ProductViewer = () => {
     if (!modelRef.current) return;
     modelRef.current.scale.set(
       scale,
-      isMobile ? scale - 0.01 : isDesktop ? scale + 0.01 : scale,
+      isMobile ? scale - 0.015 : isDesktop ? scale - 0.007 : scale,
       scale
     );
   }, [scale, isMobile, isDesktop]);

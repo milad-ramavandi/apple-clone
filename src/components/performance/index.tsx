@@ -25,21 +25,19 @@ const Performance = () => {
             trigger: ".content p",
             start: "top bottom",
             end: "top center",
-            scrub: true,
+            scrub: 1,
           },
         }
       );
 
-      
-
       // Image Positioning Timeline
       const tl = gsap.timeline({
-        defaults: { duration: 2, ease: "power1.inOut"},
+        defaults: { duration: 2, ease: "power1.inOut" },
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top bottom",
+          start: "top top",
           end: "bottom top",
-          scrub: true
+          scrub: true,
         },
       });
 
@@ -53,7 +51,6 @@ const Performance = () => {
           selector,
           {
             left: `${item.left}%`,
-            right: `${item.right}%`,
             bottom: `${item.bottom}%`,
           },
           0

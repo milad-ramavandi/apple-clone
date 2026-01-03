@@ -198,7 +198,7 @@ body {
         @apply absolute h-full top-0 lg:-top-1.5 xl:top-0;
 
         img {
-          @apply h-full scale-150! lg:scale-110!;
+          @apply h-full scale-150! lg:scale-115!;
           transform: scale(80, 80);
         }
 
@@ -242,19 +242,19 @@ body {
       }
 
       .p1 {
-        @apply absolute left-[55%] top-1/4 sm:left-1/4 md:left-1/6 lg:bottom-1/2 lg:left-[23%] z-1;
+        @apply absolute left-[55%] top-1/4 z-1;
       }
 
       .p2 {
-        @apply absolute right-[55%] top-1/4 sm:right-1/4 md:right-1/6 lg:bottom-[40%] lg:right-[17%] z-3;
+        @apply absolute left-[33%] sm:left-[25%] lg:left-[12%] top-1/4 z-3;
       }
 
       .p3 {
-        @apply absolute bottom-1/4 right-[52%] md:right-[60%] lg:right-1/4 z-2;
+        @apply absolute bottom-1/4 left-[35%] sm:left-[30%] lg:left-[15%] z-2;
       }
 
       .p4 {
-        @apply absolute -bottom-[5%] right-[55%] sm:right-1/4 md:right-1/6 lg:right-[10%] z-1;
+        @apply absolute -bottom-[5%] left-[55%] z-1;
       }
 
       .p5 {
@@ -262,11 +262,11 @@ body {
       }
 
       .p6 {
-        @apply absolute bottom-1/4 left-[52%] md:left-[60%] lg:left-1/4 z-2;
+        @apply absolute bottom-1/4 left-[52%] z-2;
       }
 
       .p7 {
-        @apply absolute -bottom-[5%] left-[55%] sm:left-1/4 md:left-1/6 lg:left-[15%] z-3;
+        @apply absolute -bottom-[5%] left-[33%] sm:left-[25%] lg:left-[12%] z-3;
       }
     }
 
@@ -274,7 +274,7 @@ body {
       @apply mx-auto max-w-xl mt-24;
 
       p {
-        @apply lg:h3-semibold base-semibold text-center translate-y-10 opacity-0 px-5;
+        @apply lg:h3-semibold base-semibold text-center px-5;
       }
     }
   }
@@ -287,7 +287,7 @@ body {
     }
 
     #f-canvas {
-      @apply w-full! h-dvh! relative z-40;
+      @apply w-full! h-dvh! relative;
     }
 
     .box {
@@ -296,6 +296,21 @@ body {
       p {
         @apply lg:h3-semibold base-semibold;
       }
+    }
+    .box1 {
+      @apply left-5 md:left-20 top-[20%] opacity-0 translate-y-5;
+    }
+    .box2 {
+      @apply right-5 md:right-20 top-[30%] opacity-0 translate-y-5;
+    }
+    .box3 {
+      @apply left-5 md:left-20 top-[50%] opacity-0 translate-y-5;
+    }
+    .box4 {
+      @apply right-5 md:right-20 top-[70%] opacity-0 translate-y-5;
+    }
+    .box5 {
+      @apply left-5 md:left-20 top-[90%] opacity-0 translate-y-5;
     }
   }
 
