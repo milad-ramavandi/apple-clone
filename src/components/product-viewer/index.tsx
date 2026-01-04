@@ -160,7 +160,7 @@ const ProductViewer = () => {
     if (!modelRef.current) return;
     modelRef.current.scale.set(
       scale,
-      isMobile ? scale - 0.015 : isDesktop ? scale - 0.007 : scale,
+      isMobile ? scale - 0.015 : isDesktop ? scale + 0.007 : scale,
       scale
     );
   }, [scale, isMobile, isDesktop]);
