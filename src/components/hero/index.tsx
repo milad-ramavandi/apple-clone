@@ -24,6 +24,7 @@ const Hero = () => {
       )
         return;
       videoRef.current.playbackRate = 2;
+      videoRef.current.play();
       splitText(headingRef.current as HTMLElement);
       gsap
         .timeline()
@@ -52,7 +53,7 @@ const Hero = () => {
       <h1 ref={headingRef}>Built for Apple Intelligence</h1>
       <video
         ref={videoRef}
-        src="./videos/hero.mp4"
+        src="./videos/hero.webm"
         autoPlay
         playsInline
         muted

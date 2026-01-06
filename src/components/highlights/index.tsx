@@ -1,4 +1,3 @@
-import { useMediaQuery } from "react-responsive";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -7,14 +6,13 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Highlights = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
   useGSAP(
     () => {
       gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: isMobile ? "bottom bottom" : "top center",
+          start: "top top",
           scrub: true,
         },
       })

@@ -2,25 +2,25 @@
 
 @font-face {
   font-family: "Regular";
-  src: url("/fonts/regular.otf");
+  src: url("/fonts/regular.woff2") format("woff2");
   font-display: swap;
 }
 
 @font-face {
   font-family: "Medium";
-  src: url("/fonts/medium.otf");
+  src: url("/fonts/medium.woff2") format("woff2");
   font-display: swap;
 }
 
 @font-face {
   font-family: "SemiBold";
-  src: url("/fonts/semibold.otf");
+  src: url("/fonts/semibold.woff2") format("woff2");
   font-display: swap;
 }
 
 @font-face {
   font-family: "Bold";
-  src: url("/fonts/bold.otf");
+  src: url("/fonts/bold.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -326,7 +326,7 @@ body {
     }
 
     .masonry {
-      @apply grid grid-cols-1 lg:grid-cols-2 gap-5 mt-20 text-[#F5F5F7];
+      @apply grid grid-cols-1 lg:grid-cols-2 gap-5 mt-20 text-[#F5F5F7] max-w-5xl mx-auto;
 
       .left-column {
         @apply flex flex-col justify-between gap-5 opacity-0 -translate-y-5;
@@ -362,8 +362,8 @@ body {
           @apply p-10 rounded-3xl flex items-center gap-7 relative;
 
           background: #1d1d1f;
-          background-clip: padding-box; /* !important */
-          border: 3px solid transparent; /* !important */
+          background-clip: padding-box; 
+          border: 3px solid transparent; 
 
           ::before {
             content: "";
@@ -371,8 +371,8 @@ body {
             position: absolute;
             inset: 0px;
             z-index: -1;
-            margin: -5px; /* !important */
-            border-radius: 24px; /* !important */
+            margin: -5px; 
+            border-radius: 24px; 
             background: linear-gradient(
               91deg,
               #0096ff 0%,

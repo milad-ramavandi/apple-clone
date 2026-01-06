@@ -18,7 +18,7 @@ const Showcase = () => {
             start: "top top",
             end: "bottom top",
             scrub: true,
-            pin: true,
+            pin: true
           },
         })
         .to(".mask img", {
@@ -32,7 +32,7 @@ const Showcase = () => {
     <section ref={sectionRef}>
       <div id="showcase">
         <div className="media">
-          <video src="/videos/game.mp4" loop muted autoPlay playsInline />
+          <video src="/videos/game.webm" loop muted playsInline autoPlay />
           <div className="mask">
             <img src="/mask-logo.svg" />
           </div>

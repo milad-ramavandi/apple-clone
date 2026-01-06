@@ -74,7 +74,7 @@ const Features = () => {
     video.loop = true;
     video.muted = true;
     video.playsInline = true;
-    video.autoplay = true;
+    video.preload = "none";
 
     video.play();
 
@@ -145,6 +145,7 @@ const Features = () => {
           end: "bottom top",
           scrub: 1,
           pin: true,
+          onEnter: () => videoRef.current?.play()
         },
       });
 
