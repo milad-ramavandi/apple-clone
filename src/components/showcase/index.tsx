@@ -7,34 +7,42 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Showcase = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
 
-  useGSAP(() => {
-    if (!isTablet) {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: "#showcase",
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-            pin: true
-          },
-        })
-        .to(".mask img", {
-          scale: 1.1,
-        })
-        .to(".content", { opacity: 1, y: 0, ease: "power1.in" });
-    }
-  }, {dependencies: [isTablet]});
+  useGSAP(
+    () => {
+      videoRef.current?.play();
+      if (!isTablet) {
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: "#showcase",
+              start: "top top",
+              end: "bottom top",
+              scrub: true,
+              pin: true,
+            },
+          })
+          .to(".mask img", {
+            scale: 1.1,
+          })
+          .to(".content", { opacity: 1, y: 0, ease: "power1.in" });
+      }
+    },
+    { dependencies: [isTablet] }
+  );
 
   return (
     <section ref={sectionRef}>
       <div id="showcase">
         <div className="media">
-          <video src="/videos/game.webm" loop muted playsInline autoPlay />
+          <video ref={videoRef} loop muted playsInline>
+            <source src="/videos/game.webm" type="video/webm" />
+            <source src="/videos/game.mp4" type="video/mp4" />
+          </video>
           <div className="mask">
-            <img src="/mask-logo.svg" />
+            <img src="/mask-logo.svg" alt="mask logo"/>
           </div>
         </div>
 

@@ -53,11 +53,13 @@ const Hero = () => {
       <h1 ref={headingRef}>Built for Apple Intelligence</h1>
       <video
         ref={videoRef}
-        src="./videos/hero.webm"
-        autoPlay
         playsInline
         muted
-      />
+        autoPlay
+      >
+        <source src="/videos/hero.webm" type="video/webm" />
+        <source src="/videos/hero.mp4" type="video/mp4" />
+      </video>
       <button ref={buttonRef} type="button">
         Buy
       </button>
